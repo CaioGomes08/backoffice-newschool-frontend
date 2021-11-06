@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlunoComponent } from './aluno/aluno/aluno.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AlunoService } from './aluno/aluno.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { AlunoService } from './aluno/aluno.service';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AlunoService

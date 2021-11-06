@@ -1,1 +1,55 @@
-<p *ngFor="let aluno of alunos">{{ aluno.nome }}</p>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Sobrenome</th>
+          <th scope="col">CPF</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let aluno of alunos; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ aluno.id }}</td>
+          <td>
+            {{ aluno.nome }}
+          </td>
+          <td>{{ aluno.sobrenome }}</td>
+          <td>{{ aluno.cpf }}</td>
+          <td><button type="button" class="btn btn-warning" (click)=editar(aluno)>Editar</button></td>
+        </tr>
+        </tbody>
+      </table>
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+    <h2>Cadastro de Aluno</h2>
+    <form [formGroup]="alunoForm" (ngSubmit)="onSubmit()"> 
+        <div class="form-group" *ngIf="editMode">
+            <label for="exampleInputEmail1">Id</label>
+            <input type="text" class="form-control" [(ngModel)]="aluno.id" id="id" aria-describedby="emailHelp" placeholder="Id" formControlName="id">
+          </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nome</label>
+          <input type="text" class="form-control" [(ngModel)]="aluno.nome" id="nome" aria-describedby="emailHelp" placeholder="Nome" formControlName="nome">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Sobrenome</label>
+          <input type="text" class="form-control" [(ngModel)]="aluno.sobrenome" id="sobrenome" aria-describedby="emailHelp" placeholder="Sobrenome" formControlName="sobrenome">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">CPF</label>
+          <input type="text" class="form-control" id="cpf" aria-describedby="emailHelp" placeholder="CPF" formControlName="cpf">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Telefone</label>
+          <input type="text" class="form-control" id="telefone" aria-describedby="emailHelp" placeholder="Telefone" formControlName="telefone">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
